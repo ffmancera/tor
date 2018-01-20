@@ -794,7 +794,8 @@ connection_ap_expire_beginning(void)
     }
     if (circ->purpose != CIRCUIT_PURPOSE_C_GENERAL &&
         circ->purpose != CIRCUIT_PURPOSE_C_MEASURE_TIMEOUT &&
-        circ->purpose != CIRCUIT_PURPOSE_PATH_BIAS_TESTING) {
+        circ->purpose != CIRCUIT_PURPOSE_PATH_BIAS_TESTING &&
+        circ->purpose != CIRCUIT_PURPOSE_S_HSDIR_POST) {
       log_warn(LD_BUG, "circuit->purpose == CIRCUIT_PURPOSE_C_GENERAL failed. "
                "The purpose on the circuit was %s; it was in state %s, "
                "path_state %s.",
